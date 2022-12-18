@@ -13,9 +13,9 @@ route.use(fileupload({
 }))
 
 cloudinary.config({ 
-    cloud_name: 'dzzixdcs1', 
-    api_key: '961216453729524', 
-    api_secret: 'uUbIi8ygFiiVwJJeuq8aXRqO2kk' 
+    cloud_name: 'dhny7m2kk', 
+    api_key: '541471156151785', 
+    api_secret: 'B9XbtAdD8ukEVdW05S1tQvMMXhg' 
   });
 
 // const multer = require("multer");
@@ -37,43 +37,6 @@ const postschema = new mongooose.Schema({
 const post = mongooose.model('post', postschema);
 
 
-// let arr=[
-//     {
- 
-//       image: '1671117119175Screenshot (15).png',
-    
-//       auther: 'pp',
-//       location: 'aqqqq',
-//       description: 'gougu',
-     
-//     },
-//     {
-    
-//       image: '1671120676866Screenshot (13).png',
-//       auther: 'll',
-//       location: 'giug',
-//       description: 'bjubvi',
-    
-//     },
-//     {
-    
-//       image: '1671128620724Screenshot (13).png',
-//       auther: 'ppp',
-//       location: 'giug',
-//       description: 'gougu',
-   
-//     },
-//     {
-     
-//       image: '1671132363542Screenshot (16).png',
-     
-//       auther: 'lord budda',
-//       location: 'india',
-//       description: 'he is lord budda',
-   
-//     }
-//   ]
-
 route.use(cors({
     origin: "*",
 }))
@@ -82,63 +45,11 @@ route.use(bodyParser.urlencoded())
 route.use(bodyParser.json())
 
 
-
-
-// to upload a file
-
-
-// upload middleware 
-
-
-// route.get("/post", (req, res) => {
-//     res.json("oooo")
-// })
-route.delete("/delete", async (req, res) => {
-    try { 
-  
-     
-        const k = await post.deleteOne({_id:`${req.query._id}`})
-console.log(k)
-        res.status(200).json({
-            k:"deleted"
-        })
-        
-        // l.map(element => {
-        //     arr.push({
-        //         image: '1671117119175Screenshot (15).png',
-        //         auther: 'pp',
-        //         location: 'aqqqq',
-        //         description: 'gougu',
-        //     })
-        // });
-    //     res.status(200).json(
-    //         "deleted"
-    //    )
-    } catch (e) {
-        res.json("err bro")
-        console.log(e.message)
-    }
-
-});
 route.get("/post", async (req, res) => {
     try {
      console.log("coming ")
         const k = await post.find()
 console.log(k)
-        // res.status(200).json({
-        //     ms: "created sucesfully",
-        //     p: p
-
-        // });
-        
-        // l.map(element => {
-        //     arr.push({
-        //         image: '1671117119175Screenshot (15).png',
-        //         auther: 'pp',
-        //         location: 'aqqqq',
-        //         description: 'gougu',
-        //     })
-        // });
         res.json({
             p:k.reverse()
         })
@@ -184,36 +95,5 @@ route.post("/add/user", async (req, res) => {
 
 });
 
-// route.post("/add/user",upload.single('image'), async (req, res) => {
-//     try {
-       
-//         console.log(req.body);
-   
-       
-//         const p = await post.create({
-//             image: req.file.filename,
-//             auther: req.body.auther,
-//             location: req.body.location,
-//             description: req.body.description
-//         })
-//        arr.push( {
-      
-//         image:req.file.filename ,
-//         auther: req.body.auther,
-//         location: req.body.location,
-//         description:  req.body.description,
-     
-//       })
-//         res.status(200).json({
-//             ms: "created sucesfully",
-            
-
-//         });
-//     } catch (e) {
-//         res.json("err bro")
-//         console.log(e.message)
-//     }
-
-// });
 module.exports = route;
 

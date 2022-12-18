@@ -13,9 +13,6 @@ app.use(express.urlencoded());
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
-app.use(express.static("public"));
-
-
 
 // your code goes here
  mongo.connect(process.env.MONGO_URL,{
